@@ -1,25 +1,7 @@
-from dotenv import load_dotenv
-import psycopg2
-import psycopg2.extras
-import os
-import uuid
+from db.connectDB import connectDB
+from functions.addItem import insert_item
 
-load_dotenv()
-
-psycopg2.extras.register_uuid()
-
-conn = psycopg2.connect(host = os.getenv("HOST"), dbname = os.getenv("DBNAME"), user = os.getenv("USER"), password = os.getenv("PASSWORD"), port = os.getenv("PORT"))
-
-cursor = conn.cursor()
-
-def insert_item():
-    item_name = input("Enter item name: ")
-    item_cost = input("Enter item cost: ")
-    cursor.execute("""INSERT INTO guitargear (uuid, item, cost) VALUES (
-                   %s, %s, %s
-                   );""",
-                   (uuid.uuid4(), item_name, int(item_cost)))
-    conn.commit()
+db = connectDB()
 
 while(True):
     print("Please choose from the following:\n",
@@ -33,8 +15,6 @@ while(True):
     choice = int(input("Enter your choice: "))
 
     if choice == 1:
-        # for item in ledger:
-        #     print(item[1], ": $", item[2])
         print("\n")
         
     elif choice == 2:
@@ -42,7 +22,7 @@ while(True):
         print("\n")
 
     elif choice == 3:
-        insert_item()
+        insert_item(db["conn"], db["cursor"])
         print("\n")
         
     elif choice == 4:
@@ -54,8 +34,8 @@ while(True):
         print("\n")
 
     elif choice == 0:
-        cursor.close()
-        conn.close()
+        db["cursor"].close()
+        db["conn"].close()
         break
 
     else:
