@@ -1,5 +1,5 @@
 from db.connectDB import connectDB
-from functions.addItem import insert_item
+from functions import showAll, addItem
 
 db = connectDB()
 
@@ -15,6 +15,7 @@ while(True):
     choice = int(input("Enter your choice: "))
 
     if choice == 1:
+        showAll.show_all(db["conn"], db["cursor"])
         print("\n")
         
     elif choice == 2:
@@ -22,7 +23,7 @@ while(True):
         print("\n")
 
     elif choice == 3:
-        insert_item(db["conn"], db["cursor"])
+        addItem.insert_item(db["conn"], db["cursor"])
         print("\n")
         
     elif choice == 4:
