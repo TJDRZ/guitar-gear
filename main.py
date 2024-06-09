@@ -1,5 +1,5 @@
 from db.connectDB import connectDB
-from functions import showAll, addItem
+from functions import showAll, combinedCosts, addItem
 
 db = connectDB()
 
@@ -19,7 +19,7 @@ while(True):
         print("\n")
         
     elif choice == 2:
-        print("TBD")
+        combinedCosts.combined_costs(db["conn"], db["cursor"])
         print("\n")
 
     elif choice == 3:

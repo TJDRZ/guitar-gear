@@ -7,6 +7,6 @@ def insert_item(conn, cursor):
     cursor.execute("""INSERT INTO guitargear (uuid, item, cost) VALUES (
                    %s, %s, %s
                    );""",
-                   (uuid.uuid4(), item_name, int(item_cost)))
+                   (uuid.uuid4(), item_name, float(item_cost)))
     
     conn.commit()
