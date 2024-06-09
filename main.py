@@ -42,4 +42,4 @@ while(True):
         break
 
     else:
-        print("Please choose a proper option.\n")
+        print("ERROR: Please choose a proper option.\n")

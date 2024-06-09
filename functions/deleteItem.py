@@ -26,7 +26,7 @@ def delete_item(conn, cursor):
                 return
 
             else:
-                print("Row does not exist.\n")
+                print("ERROR: Row does not exist.\n")
             
         except:
-            print("Please choose a proper option.\n")
+            print("ERROR: Please choose a proper option.\n")

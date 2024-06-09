@@ -52,13 +52,13 @@ def update_item(conn, cursor):
                         return
 
                     else:
-                        print("Please choose a proper option.\n")
+                        print("ERROR: Please choose a proper option.\n")
 
             elif choice == "0":
                 return
 
             else:
-                print("Row does not exist.\n")
+                print("ERROR: Row does not exist.\n")
             
         except:
-            print("Please choose a proper option.\n")
+            print("ERROR: Please choose a proper option.\n")
