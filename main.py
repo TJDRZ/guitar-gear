@@ -1,5 +1,5 @@
 from db.connectDB import connectDB
-from functions import showAll, combinedCosts, addItem, updateItem
+from functions import showAll, combinedCosts, addItem, updateItem, deleteItem
 
 db = connectDB()
 
@@ -33,7 +33,7 @@ while(True):
         print("\n")
 
     elif choice == "5":
-        print("TBD")
+        deleteItem.delete_item(db["conn"], db["cursor"])
         print("\n")
 
     elif choice == "0":

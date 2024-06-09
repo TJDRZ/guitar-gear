@@ -35,7 +35,7 @@ def update_item(conn, cursor):
                                     SET item = %s
                                     WHERE uuid = %s;""",
                                     (new_name, ledger[int(choice) - 1][0]))
-
+                        conn.commit()
                         return
                     
                     elif column_choice == "2":
@@ -45,7 +45,7 @@ def update_item(conn, cursor):
                                     SET cost = %s
                                     WHERE uuid = %s;""",
                                     (new_cost, ledger[int(choice) - 1][0]))
-
+                        conn.commit()
                         return
                     
                     elif column_choice == "0":
@@ -62,5 +62,3 @@ def update_item(conn, cursor):
             
         except:
             print("Please choose a proper option.\n")
-    
-    conn.commit()
